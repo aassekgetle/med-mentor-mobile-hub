@@ -15,7 +15,11 @@ import {
 } from 'lucide-react';
 import medicalHero from '@/assets/medical-hero.jpg';
 
-const Dashboard = () => {
+interface DashboardProps {
+  onNavigate: (section: string) => void;
+}
+
+const Dashboard = ({ onNavigate }: DashboardProps) => {
   const todayStats = [
     { label: 'Study Streak', value: '12 days', icon: Target, color: 'text-success' },
     { label: 'Cards Reviewed', value: '47', icon: BookOpen, color: 'text-primary' },
@@ -57,11 +61,19 @@ const Dashboard = () => {
                 Continue your medical education journey. You're doing great with a 12-day study streak!
               </p>
               <div className="flex gap-3">
-                <Button variant="medical-outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+                <Button 
+                  variant="medical-outline" 
+                  className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+                  onClick={() => onNavigate('flashcards')}
+                >
                   <Play className="h-4 w-4 mr-2" />
                   Continue Learning
                 </Button>
-                <Button variant="medical-ghost" className="text-primary-foreground hover:bg-primary-foreground/10">
+                <Button 
+                  variant="medical-ghost" 
+                  className="text-primary-foreground hover:bg-primary-foreground/10"
+                  onClick={() => onNavigate('schedule')}
+                >
                   <Calendar className="h-4 w-4 mr-2" />
                   Study Schedule
                 </Button>
@@ -132,7 +144,7 @@ const Dashboard = () => {
                 />
               </div>
             ))}
-            <Button variant="medical-outline" className="w-full mt-4">
+            <Button variant="medical-outline" className="w-full mt-4" onClick={() => onNavigate('progress')}>
               View Detailed Progress
             </Button>
           </CardContent>
@@ -163,7 +175,7 @@ const Dashboard = () => {
                 </span>
               </div>
             ))}
-            <Button variant="medical" className="w-full">
+            <Button variant="medical" className="w-full" onClick={() => onNavigate('exams')}>
               <Play className="h-4 w-4 mr-2" />
               Start Practice Session
             </Button>
@@ -178,21 +190,21 @@ const Dashboard = () => {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <Button variant="medical-outline" className="h-20 flex-col gap-2">
+            <Button variant="medical-outline" className="h-20 flex-col gap-2" onClick={() => onNavigate('flashcards')}>
               <BookOpen className="h-6 w-6" />
               <span>Flashcards</span>
             </Button>
-            <Button variant="medical-outline" className="h-20 flex-col gap-2">
+            <Button variant="medical-outline" className="h-20 flex-col gap-2" onClick={() => onNavigate('anatomy')}>
               <Brain className="h-6 w-6" />
               <span>3D Anatomy</span>
             </Button>
-            <Button variant="medical-outline" className="h-20 flex-col gap-2">
+            <Button variant="medical-outline" className="h-20 flex-col gap-2" onClick={() => onNavigate('hospital')}>
               <Stethoscope className="h-6 w-6" />
               <span>Hospital Mode</span>
             </Button>
-            <Button variant="medical-outline" className="h-20 flex-col gap-2">
+            <Button variant="medical-outline" className="h-20 flex-col gap-2" onClick={() => onNavigate('exams')}>
               <Heart className="h-6 w-6" />
-              <span>AI Tutor</span>
+              <span>Practice Exams</span>
             </Button>
           </div>
         </CardContent>

@@ -3,6 +3,10 @@ import MedicalNav from '@/components/MedicalNav';
 import Dashboard from '@/components/Dashboard';
 import Flashcards from '@/components/Flashcards';
 import HospitalMode from '@/components/HospitalMode';
+import PracticeExams from '@/components/PracticeExams';
+import AnatomyViewer from '@/components/AnatomyViewer';
+import ProgressTracking from '@/components/ProgressTracking';
+import StudySchedule from '@/components/StudySchedule';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('dashboard');
@@ -10,41 +14,21 @@ const Index = () => {
   const renderActiveSection = () => {
     switch (activeSection) {
       case 'dashboard':
-        return <Dashboard />;
+        return <Dashboard onNavigate={setActiveSection} />;
       case 'flashcards':
         return <Flashcards />;
       case 'hospital':
         return <HospitalMode />;
       case 'exams':
-        return (
-          <div className="space-y-6">
-            <h2 className="text-3xl font-bold text-foreground">Practice Exams</h2>
-            <p className="text-muted-foreground">OSCE simulations and MCQ practice coming soon...</p>
-          </div>
-        );
+        return <PracticeExams />;
       case 'anatomy':
-        return (
-          <div className="space-y-6">
-            <h2 className="text-3xl font-bold text-foreground">3D Anatomy</h2>
-            <p className="text-muted-foreground">Interactive 3D anatomy models coming soon...</p>
-          </div>
-        );
+        return <AnatomyViewer />;
       case 'progress':
-        return (
-          <div className="space-y-6">
-            <h2 className="text-3xl font-bold text-foreground">Progress Tracking</h2>
-            <p className="text-muted-foreground">Detailed analytics and progress reports coming soon...</p>
-          </div>
-        );
+        return <ProgressTracking />;
       case 'schedule':
-        return (
-          <div className="space-y-6">
-            <h2 className="text-3xl font-bold text-foreground">Study Plan</h2>
-            <p className="text-muted-foreground">Personalized study schedules coming soon...</p>
-          </div>
-        );
+        return <StudySchedule />;
       default:
-        return <Dashboard />;
+        return <Dashboard onNavigate={setActiveSection} />;
     }
   };
 
