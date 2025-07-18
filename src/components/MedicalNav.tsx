@@ -41,7 +41,7 @@ const MedicalNav = ({ activeSection, onSectionChange }: MedicalNavProps) => {
           variant="medical-outline"
           size="icon"
           onClick={() => setIsOpen(!isOpen)}
-          className="bg-background/95 backdrop-blur-sm"
+          className="bg-background/95 backdrop-blur-sm shadow-card"
         >
           {isOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
         </Button>
